@@ -363,7 +363,9 @@ PyThread_exit_thread(void)
     dprintf(("PyThread_exit_thread called\n"));
     if (!initialized)
         exit(0);
+#ifndef __wasi__
     pthread_exit(0);
+#endif
 }
 
 #ifdef USE_SEMAPHORES

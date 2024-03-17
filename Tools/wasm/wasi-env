@@ -55,7 +55,8 @@ if command -v ccache >/dev/null 2>&1; then
     CXX="ccache ${CXX}"
 fi
 
-LDSHARED="${WASI_SDK_PATH}/bin/wasm-ld"
+LD="${CC}"
+LDSHARED="${CC}"
 AR="${WASI_SDK_PATH}/bin/llvm-ar"
 RANLIB="${WASI_SDK_PATH}/bin/ranlib"
 
@@ -65,6 +66,9 @@ PKG_CONFIG_LIBDIR="${WASI_SYSROOT}/lib/pkgconfig:${WASI_SYSROOT}/share/pkgconfig
 PKG_CONFIG_SYSROOT_DIR="${WASI_SYSROOT}"
 
 PATH="${WASI_SDK_PATH}/bin:${PATH}"
+
+CFLAGS="--target=wasm32-wasi-threads -pthread -matomics -mbulk-memory "
+LDFLAGS="--target=wasm32-wasi-threads -pthread -Wl,-zstack-size=1048576,--initial-memory=16777216,--max-memory=2147483648,--import-memory,--export-memory,--shared-memory "
 
 export WASI_SDK_PATH WASI_SYSROOT
 export CC CPP CXX LDSHARED AR RANLIB
