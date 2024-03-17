@@ -684,6 +684,7 @@ _profiles = [
         host=Host.wasm32_emscripten,
         target=EmscriptenTarget.browser,
         dynamic_linking=True,
+        pthreads=True
     ),
     BuildProfile(
         "emscripten-browser-debug",

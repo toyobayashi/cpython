@@ -6983,7 +6983,7 @@ $as_echo "$LDLIBRARY" >&6; }
 # LIBRARY_DEPS, LINK_PYTHON_OBJS and LINK_PYTHON_DEPS variable
 case $ac_sys_system/$ac_sys_emscripten_target in #(
   Emscripten/browser*) :
-    LIBRARY_DEPS='$(PY3LIBRARY) $(WASM_STDLIB) python.html python.worker.js' ;; #(
+    LIBRARY_DEPS='$(PY3LIBRARY) $(WASM_STDLIB) python.html worker.js' ;; #(
   *) :
     LIBRARY_DEPS='$(PY3LIBRARY) $(EXPORTSYMS)'
  ;;
@@ -8180,7 +8180,7 @@ fi
     if test "x$enable_wasm_pthreads" = xyes; then :
 
       as_fn_append CFLAGS_NODIST " -pthread"
-      as_fn_append LDFLAGS_NODIST " -sUSE_PTHREADS"
+      as_fn_append LDFLAGS_NODIST " -sUSE_PTHREADS -sPTHREAD_POOL_SIZE=4 "
       as_fn_append LINKFORSHARED " -sPROXY_TO_PTHREAD"
 
 fi

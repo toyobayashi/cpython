@@ -61,6 +61,7 @@ const stdinBuffer = new StdinBuffer()
 
 var Module = {
     noInitialRun: true,
+    mainScriptUrlOrBlob: 'python.js',
     stdin: stdinBuffer.stdin,
     stdout: stdout,
     stderr: stderr,
