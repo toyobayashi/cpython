@@ -2120,7 +2120,7 @@ AS_CASE([$ac_sys_system],
     AS_VAR_APPEND([LDFLAGS_NODIST], [" -sWASM_BIGINT"])
 
     dnl Include file system support
-    AS_VAR_APPEND([LDFLAGS_NODIST], [" -sFORCE_FILESYSTEM -lidbfs.js -lnodefs.js -lproxyfs.js -lworkerfs.js"])
+    AS_VAR_APPEND([LDFLAGS_NODIST], [" -sFORCE_FILESYSTEM -lidbfs.js -lnodefs.js -lproxyfs.js -lworkerfs.js -sEXPORTED_RUNTIME_METHODS=['FS']"])
 
     AS_VAR_IF([enable_wasm_dynamic_linking], [yes], [
       AS_VAR_APPEND([LINKFORSHARED], [" -sMAIN_MODULE"])
@@ -2129,7 +2129,7 @@ AS_CASE([$ac_sys_system],
     AS_VAR_IF([enable_wasm_pthreads], [yes], [
       AS_VAR_APPEND([CFLAGS_NODIST], [" -pthread"])
       AS_VAR_APPEND([LDFLAGS_NODIST], [" -sUSE_PTHREADS"])
-      AS_VAR_APPEND([LINKFORSHARED], [" -sPROXY_TO_PTHREAD"])
+      # AS_VAR_APPEND([LINKFORSHARED], [" -sPROXY_TO_PTHREAD"])
     ])
 
     AS_CASE([$ac_sys_emscripten_target],

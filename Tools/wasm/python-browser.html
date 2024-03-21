@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+	</head>
+	<body>
+    <div>
+      <div id="container" style="width:100%;height:720px;border:1px solid grey"></div>
+      <div>
+        <button type="button" id="run" style="width: 300px; height: 150px; font-size: 40px;">Run</button>
+      </div>
+    </div>
+
+<script type="text/python"># /app/main.py
+
+import threading
+
+def print_square(num):
+    event = threading.Event()
+    event.wait(1)
+    print("Square: {}" .format(num * num))
+
+def print_cube(num):
+    print("Cube: {}" .format(num * num * num))
+
+if __name__ =="__main__":
+    t1 = threading.Thread(target=print_square, args=(10,))
+    t2 = threading.Thread(target=print_cube, args=(10,))
+
+    t1.start()
+    t2.start()
+
+    t1.join()
+    t2.join()
+
+    print("Done!")
+</script>
+
+		<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
+		<script src="python-browser.js"></script>
+	</body>
+</html>

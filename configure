@@ -8169,7 +8169,7 @@ fi
 
         as_fn_append LDFLAGS_NODIST " -sWASM_BIGINT"
 
-        as_fn_append LDFLAGS_NODIST " -sFORCE_FILESYSTEM -lidbfs.js -lnodefs.js -lproxyfs.js -lworkerfs.js"
+        as_fn_append LDFLAGS_NODIST " -sFORCE_FILESYSTEM -lidbfs.js -lnodefs.js -lproxyfs.js -lworkerfs.js -sEXPORTED_RUNTIME_METHODS=['FS']"
 
     if test "x$enable_wasm_dynamic_linking" = xyes; then :
 
@@ -8181,7 +8181,7 @@ fi
 
       as_fn_append CFLAGS_NODIST " -pthread"
       as_fn_append LDFLAGS_NODIST " -sUSE_PTHREADS -sPTHREAD_POOL_SIZE=4 "
-      as_fn_append LINKFORSHARED " -sPROXY_TO_PTHREAD"
+      # as_fn_append LINKFORSHARED " -sPROXY_TO_PTHREAD"
 
 fi
 
